@@ -7,11 +7,12 @@ const operations = {
     'default': userInput => screen.textContent += userInput,
 }
 
-buttonContainer.addEventListener('click', (event) => {
+buttonContainer.addEventListener('click', (event) => { 
     let userInput = event.target.textContent
 
     operation = operations[userInput] || operations['default']
     operation(userInput)
+    
 })  
 
 function clearValue() {
@@ -23,7 +24,7 @@ function userResponse() {
         .replace(/x/g, '*')
         .replace(/÷/g, '/')
     const result = eval(data)
-    screen.textContent = result == 'Infinity'
+    screen.textContent = result == 'Infinity' || isNaN(result)
         ? 'Error'
         : result
 }
